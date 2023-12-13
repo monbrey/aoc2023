@@ -61,7 +61,15 @@ const mapGroups = (groups: number[], springs: string, start: number = 0, matches
 	return mapGroups(groups, springs, start + 1, matches);
 }
 
-console.log(data.reduce((acc, row) => acc += mapGroups(row.groups, row.springs), 0));
+console.log(data.reduce((acc, row) => {
+	const base = mapGroups(row.groups, row.springs);
+	const ext1 = mapGroups([...row.groups, ...row.groups], row.springs + "?" + row.springs);
+	const ext2 = mapGroups([...row.groups, ...row.groups, ...row.groups], row.springs + "?" + row.springs + '?' + row.springs);
+
+	console.log(base, ext1, ext2);
+
+	return acc += 1;
+}, 0));
 
 const end = performance.now();
 console.log(`Execution time: ${end - start} ms`);

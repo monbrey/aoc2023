@@ -17,7 +17,6 @@ for (let y = 0; y < starmap.length; y++) {
 		for (let x = 0; x < starmap[y].length; x++) {
 			if (starmap.every(l => l[x] === '.')) {
 				// every empty column we find, the x pos increases by 999999 (1 replaced by 1m)
-				
 				xinc += 999999;
 			} else {
 				if (starmap[y][x] === '#') galaxyPos.set(counter++, [y+yinc, x+xinc]);
