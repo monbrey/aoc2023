@@ -1,5 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
+const start = performance.now();
+
 const raw = await readFile('day-16/input.txt', 'utf8');
 const input = raw.trim().split('\r\n').map(_ => _.split(''));
 
@@ -132,7 +134,7 @@ const totals = starts.map(start => {
 	steps.push(start);
 
 	let step;
-	while (step = steps.shift()) {
+	while (step = steps.pop()) {
 		follow(step[0], step[1], steps, energised)
 	}
 
@@ -140,3 +142,6 @@ const totals = starts.map(start => {
 });
 
 console.log(Math.max(...totals));
+
+const end = performance.now();
+console.log(`Execution time: ${end - start} ms`);
