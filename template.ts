@@ -1,4 +1,11 @@
-import { readFile } from 'node:fs/promises';
+const start = performance.now();
 
-const input = await readFile('day-X/input.txt', 'utf8');
-const lines = input.trim().split('\n')
+import { readFileSync } from 'node:fs';
+
+const parse = () => {
+	const input = readFileSync(`input`, 'utf8');
+	return input.trim()
+}
+
+const end = performance.now();
+console.log(`Execution time: ${end - start} ms`);
