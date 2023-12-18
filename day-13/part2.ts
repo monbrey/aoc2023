@@ -1,5 +1,4 @@
 import { readFile } from 'node:fs/promises';
-import { default as _ } from 'lodash';
 
 const input = await readFile('day-13/input.txt', 'utf8');
 const patterns = input.trim().split('\r\n\r\n').map(p => p.split('\r\n'))
